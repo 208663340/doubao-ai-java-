@@ -4,16 +4,16 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.example.admin.dao.mapper.BookMapper">
 
-    <resultMap id="BaseResultMap" type="org.example.admin.dao.entity.Book">
+    <resultMap id="BaseResultMap" type="org.example.admin.dao.entity.BookDO">
             <id property="id" column="id" />
-            <result property="userid" column="userId" />
-            <result property="bookname" column="bookName" />
-            <result property="updatetime" column="updateTime" />
-            <result property="deletetime" column="deleteTime" />
-            <result property="isdelete" column="isDelete" />
+            <result property="userId" column="user_id" />
+            <result property="bookName" column="book_name" />
+            <result property="updateTime" column="update_time" />
+            <result property="createTime" column="create_time" />
+            <result property="delFlag" column="del_flag" />
     </resultMap>
 
     <sql id="Base_Column_List">
-        id,userId,bookName,updateTime,deleteTime,isDelete
+        id,user_id,book_name,update_time,create_time,del_flag
     </sql>
 </mapper>

@@ -1,6 +1,6 @@
 package org.example.admin.dao.mapper;
 
-import org.example.admin.dao.entity.User;
+import org.example.admin.dao.entity.UserDO;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 /**
@@ -9,7 +9,7 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 * @createDate 2025-03-15 13:27:42
 * @Entity org.example.admin.dao.entity.User
 */
-public interface UserMapper extends BaseMapper<User> {
+public interface UserMapper extends BaseMapper<UserDO> {
 
 }
 

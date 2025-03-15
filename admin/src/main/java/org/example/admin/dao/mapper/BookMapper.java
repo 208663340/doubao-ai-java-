@@ -1,6 +1,6 @@
 package org.example.admin.dao.mapper;
 
-import org.example.admin.dao.entity.Book;
+import org.example.admin.dao.entity.BookDO;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 /**
@@ -9,7 +9,7 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 * @createDate 2025-03-15 13:23:39
 * @Entity org.example.admin.dao.entity.Book
 */
-public interface BookMapper extends BaseMapper<Book> {
+public interface BookMapper extends BaseMapper<BookDO> {
 
 }
 

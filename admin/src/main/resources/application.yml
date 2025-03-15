@@ -1,12 +1,20 @@
+server:
+  port: 7001
 spring:
   datasource:
     username: root
-    password: root
+    password: 123456
     url: jdbc:mysql://127.0.0.1:3306/dian?characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&transformedBitIsBoolean=true&serverTimezone=GMT%2B8
     driver-class-name: com.mysql.cj.jdbc.Driver
     hikari:
-      connection-test-query: select 1
+      #用的是mysql 8.0 不需要这个配置，如果你是mysql 5.x 的话，这个配置可以使用，他是在连接之前测试连接的
+      #connection-test-query: select 1
       connection-timeout: 20000
       idle-timeout: 300000
       maximum-pool-size: 5
       minimum-idle: 5
+
+  data:
+    redis:
+      database: 1
+      host: localhost

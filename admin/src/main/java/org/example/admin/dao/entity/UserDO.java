@@ -4,17 +4,19 @@ import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import lombok.Data;
+import org.example.admin.comoon.database.BaseDO;
+
 import java.io.Serializable;
 import java.util.Date;
-import lombok.Data;
 
 /**
  * 
- * @TableName book
+ * @TableName user
  */
-@TableName(value ="book")
+@TableName(value ="user")
 @Data
-public class Book implements Serializable {
+public class UserDO extends BaseDO implements Serializable {
     /**
      * 
      */
@@ -24,27 +26,37 @@ public class Book implements Serializable {
     /**
      * 
      */
-    private String userid;
+    private String username;
 
     /**
      * 
      */
-    private String bookname;
+    private String email;
 
     /**
      * 
      */
-    private Date updatetime;
+    private String password;
 
     /**
      * 
      */
-    private Date deletetime;
+    private Object status;
 
     /**
      * 
      */
-    private Integer isdelete;
+    private Date createTime;
+
+    /**
+     * 
+     */
+    private Date updateTime;
+
+    /**
+     * 
+     */
+    private Integer delFlag;
 
     @TableField(exist = false)
     private static final long serialVersionUID = 1L;

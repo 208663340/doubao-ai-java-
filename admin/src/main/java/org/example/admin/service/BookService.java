@@ -1,6 +1,6 @@
 package org.example.admin.service;
 
-import org.example.admin.dao.entity.Book;
+import org.example.admin.dao.entity.BookDO;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**
@@ -8,6 +8,6 @@ import com.baomidou.mybatisplus.extension.service.IService;
 * @description 针对表【book】的数据库操作Service
 * @createDate 2025-03-15 13:23:39
 */
-public interface BookService extends IService<Book> {
+public interface BookService extends IService<BookDO> {
 
 }
