@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.example.admin.dao.mapper.BookMapper">
+
+    <resultMap id="BaseResultMap" type="org.example.admin.dao.entity.Book">
+            <id property="id" column="id" />
+            <result property="userid" column="userId" />
+            <result property="bookname" column="bookName" />
+            <result property="updatetime" column="updateTime" />
+            <result property="deletetime" column="deleteTime" />
+            <result property="isdelete" column="isDelete" />
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,userId,bookName,updateTime,deleteTime,isDelete
+    </sql>
+</mapper>
