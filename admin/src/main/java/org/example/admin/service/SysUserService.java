@@ -1,7 +1,8 @@
 package org.example.admin.service;
 
-import org.example.admin.dao.entity.UserDO;
+
 import com.baomidou.mybatisplus.extension.service.IService;
+import org.example.admin.dao.entity.UserDO;
 import org.example.admin.dto.req.UserLoginReqDTO;
 import org.example.admin.dto.req.UserRegisterReqDTO;
 import org.example.admin.dto.req.UserUpdateReqDTO;
@@ -10,10 +11,10 @@ import org.example.admin.dto.resp.UserRespDTO;
 
 /**
 * @author 20866
-* @description 针对表【user】的数据库操作Service
-* @createDate 2025-03-15 13:27:42
+* @description 针对表【sys_user(用户信息表)】的数据库操作Service
+* @createDate 2025-03-27 13:40:30
 */
-public interface UserService extends IService<UserDO> {
+public interface SysUserService extends IService<UserDO> {
 
 
     /**

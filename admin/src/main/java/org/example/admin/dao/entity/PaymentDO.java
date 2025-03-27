@@ -5,58 +5,52 @@ import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.Date;
 import lombok.Data;
-import org.example.admin.comoon.database.BaseDO;
 
 /**
- * 用户信息表
- * @TableName sys_user
+ * 支付记录表
+ * @TableName sys_payment
  */
-
+@TableName(value ="sys_payment")
 @Data
-@TableName(value ="sys_user")
-public class UserDO extends BaseDO {
+public class PaymentDO implements Serializable {
     /**
-     * 用户ID
+     * 支付ID
      */
     @TableId(type = IdType.AUTO)
-    private Long userId;
+    private Long paymentId;
 
     /**
-     * 用户名
+     * 关联订单ID
      */
-    private String username;
+    private Long orderId;
 
     /**
-     * 加密密码
+     * 支付单号
      */
-    private String password;
+    private String paymentNo;
 
     /**
-     * 邮箱地址
+     * 支付金额
      */
-    private String email;
+    private BigDecimal amount;
 
     /**
-     * 手机号码
+     * 支付渠道（ALIPAY/WECHAT）
      */
-    private String phone;
+    private String channel;
 
     /**
-     * 性别（0未知 1男 2女）
-     */
-    private Integer gender;
-
-    /**
-     * 状态（1启用 0禁用）
+     * 支付状态
      */
     private Integer status;
 
     /**
-     * 创建人
+     * 支付回调数据
      */
-    private String createBy;
+    private String callbackData;
 
     /**
      * 创建时间
@@ -64,14 +58,9 @@ public class UserDO extends BaseDO {
     private Date createTime;
 
     /**
-     * 更新人
+     * 完成时间
      */
-    private String updateBy;
-
-    /**
-     * 更新时间
-     */
-    private Date updateTime;
+    private Date completeTime;
 
     @TableField(exist = false)
     private static final long serialVersionUID = 1L;
