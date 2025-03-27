@@ -17,31 +17,35 @@
 
 package org.example.admin.config;
 
-import com.baomidou.mybatisplus.annotation.DbType;
-import com.baomidou.mybatisplus.extension.plugins.MybatisPlusInterceptor;
-import com.baomidou.mybatisplus.extension.plugins.inner.BlockAttackInnerInterceptor;
-import com.baomidou.mybatisplus.extension.plugins.inner.PaginationInnerInterceptor;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
+import org.redisson.api.RBloomFilter;
+import org.redisson.api.RedissonClient;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 /**
- * 数据库持久层配置类
+ * 布隆过滤器配置
  * 公众号：马丁玩编程，回复：加群，添加马哥微信（备注：link）获取项目资料
  */
-@Configuration(value = "dataBaseConfigurationByAdmin")
-public class DataBaseConfiguration {
+@Configuration(value = "rBloomFilterConfigurationByAdmin")
+public class RBloomFilterConfiguration {
 
     /**
-     * 分页插件
+     * 防止用户注册查询数据库的布隆过滤器
      */
     @Bean
-    @ConditionalOnMissingBean
-    public MybatisPlusInterceptor mybatisPlusInterceptorByAdmin() {
-        MybatisPlusInterceptor interceptor = new MybatisPlusInterceptor();
-        interceptor.addInnerInterceptor(new PaginationInnerInterceptor(DbType.MYSQL));
-        // 添加 SQL 分析插件（会打印完整 SQL）
-        interceptor.addInnerInterceptor(new BlockAttackInnerInterceptor());
-        return interceptor;
+    public RBloomFilter<String> userRegisterCachePenetrationBloomFilter(RedissonClient redissonClient) {
+        RBloomFilter<String> cachePenetrationBloomFilter = redissonClient.getBloomFilter("userRegisterCachePenetrationBloomFilter");
+        cachePenetrationBloomFilter.tryInit(100000000L, 0.001);
+        return cachePenetrationBloomFilter;
     }
+
+    /**
+     * 防止分组标识注册查询数据库的布隆过滤器
+     */
+//    @Bean
+//    public RBloomFilter<String> gidRegisterCachePenetrationBloomFilter(RedissonClient redissonClient) {
+//        RBloomFilter<String> cachePenetrationBloomFilter = redissonClient.getBloomFilter("gidRegisterCachePenetrationBloomFilter");
+//        cachePenetrationBloomFilter.tryInit(200000000L, 0.001);
+//        return cachePenetrationBloomFilter;
+//    }
 }

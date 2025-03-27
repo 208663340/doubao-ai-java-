@@ -2,34 +2,40 @@ package org.example.admin.controller;
 
 import cn.hutool.core.bean.BeanUtil;
 import jakarta.annotation.Resource;
+import lombok.AllArgsConstructor;
 import org.example.admin.comoon.convention.result.Result;
 import org.example.admin.comoon.convention.result.Results;
 import org.example.admin.dto.req.UserLoginReqDTO;
 import org.example.admin.dto.req.UserRegisterReqDTO;
 import org.example.admin.dto.req.UserUpdateReqDTO;
+import org.example.admin.dto.resp.UserActualRespDTO;
 import org.example.admin.dto.resp.UserLoginRespDTO;
 import org.example.admin.dto.resp.UserRespDTO;
-import org.example.admin.service.BookService;
-import org.example.admin.service.UserService;
+import org.example.admin.service.SysUserService;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api")
-public class UserController {
+@AllArgsConstructor
+public class UserLoginController {
 
-    @Resource
-    private UserService userService;
-
+    private final SysUserService userService;
 
     /**
      * 根据用户名查询用户信息
      */
-    @GetMapping("/crud/admin/v1/user/{username}")
+    @GetMapping("/api/crud/admin/v1/user/{username}")
     public Result<UserRespDTO> getUserByUsername(@PathVariable("username") String username) {
         return Results.success(userService.getUserByUsername(username));
     }
 
-
+    /**
+     * 根据用户名查询无脱敏用户信息
+     */
+    @GetMapping("/api/crud/admin/v1/actual/user/{username}")
+    public Result<UserActualRespDTO> getActualUserByUsername(@PathVariable("username") String username) {
+        return Results.success(BeanUtil.toBean(userService.getUserByUsername(username), UserActualRespDTO.class));
+    }
 
     /**
      * 查询用户名是否存在
