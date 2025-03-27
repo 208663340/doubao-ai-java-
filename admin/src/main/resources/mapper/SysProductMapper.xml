@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.example.admin.dao.mapper.SysProductMapper">
+
+    <resultMap id="BaseResultMap" type="org.example.admin.dao.entity.ProductDO">
+            <id property="productId" column="product_id" />
+            <result property="productCode" column="product_code" />
+            <result property="productName" column="product_name" />
+            <result property="categoryId" column="category_id" />
+            <result property="brandId" column="brand_id" />
+            <result property="price" column="price" />
+            <result property="originalPrice" column="original_price" />
+            <result property="stockQuantity" column="stock_quantity" />
+            <result property="detailDescription" column="detail_description" />
+            <result property="mainImage" column="main_image" />
+            <result property="status" column="status" />
+            <result property="salesVolume" column="sales_volume" />
+            <result property="createBy" column="create_by" />
+            <result property="createTime" column="create_time" />
+            <result property="updateBy" column="update_by" />
+            <result property="updateTime" column="update_time" />
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        product_id,product_code,product_name,category_id,brand_id,price,
+        original_price,stock_quantity,detail_description,main_image,status,
+        sales_volume,create_by,create_time,update_by,update_time
+    </sql>
+</mapper>

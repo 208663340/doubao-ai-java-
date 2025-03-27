@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.example.admin.dao.mapper.SysOrderDetailMapper">
+
+    <resultMap id="BaseResultMap" type="org.example.admin.dao.entity.OrderDetailDO">
+            <id property="detailId" column="detail_id" />
+            <result property="orderId" column="order_id" />
+            <result property="productId" column="product_id" />
+            <result property="productName" column="product_name" />
+            <result property="productPrice" column="product_price" />
+            <result property="quantity" column="quantity" />
+            <result property="totalPrice" column="total_price" />
+            <result property="createTime" column="create_time" />
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        detail_id,order_id,product_id,product_name,product_price,quantity,
+        total_price,create_time
+    </sql>
+</mapper>

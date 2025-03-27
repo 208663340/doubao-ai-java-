@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.example.admin.dao.mapper.SysPaymentMapper">
+
+    <resultMap id="BaseResultMap" type="org.example.admin.dao.entity.PaymentDO">
+            <id property="paymentId" column="payment_id" />
+            <result property="orderId" column="order_id" />
+            <result property="paymentNo" column="payment_no" />
+            <result property="amount" column="amount" />
+            <result property="channel" column="channel" />
+            <result property="status" column="status" />
+            <result property="callbackData" column="callback_data" />
+            <result property="createTime" column="create_time" />
+            <result property="completeTime" column="complete_time" />
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        payment_id,order_id,payment_no,amount,channel,status,
+        callback_data,create_time,complete_time
+    </sql>
+</mapper>
