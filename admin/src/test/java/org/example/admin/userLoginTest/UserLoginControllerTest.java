@@ -12,8 +12,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 // region 被测类相关导入
 import org.example.admin.comoon.convention.result.Result;
-import org.example.admin.comoon.convention.result.Results;
-import org.example.admin.dto.resp.UserRespDTO;
+import org.example.admin.dto.resp.user.UserRespDTO;
 import org.example.admin.service.SysUserService;
 // endregion
 

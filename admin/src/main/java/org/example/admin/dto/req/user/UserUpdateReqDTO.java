@@ -1,4 +1,4 @@
-package org.example.admin.dto.req;
+package org.example.admin.dto.req.user;
 
 import lombok.Data;
 

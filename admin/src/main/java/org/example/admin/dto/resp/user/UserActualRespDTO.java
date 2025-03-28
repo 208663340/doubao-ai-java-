@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 
-package org.example.admin.dto.resp;
+package org.example.admin.dto.resp.user;
 
 import lombok.Data;
 
