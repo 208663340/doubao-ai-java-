@@ -39,12 +39,12 @@ public class ModelConfigs implements Serializable {
     /**
      * 创建时间
      */
-    private Date createdAt;
+    private Date createdTime;
 
     /**
      * 更新时间
      */
-    private Date updatedAt;
+    private Date updatedTime;
 
     @TableField(exist = false)
     private static final long serialVersionUID = 1L;

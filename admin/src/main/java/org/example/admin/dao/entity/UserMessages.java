@@ -39,7 +39,7 @@ public class UserMessages implements Serializable {
     /**
      * 消息发送时间
      */
-    private Date createdAt;
+    private Date createdTime;
 
     /**
      * 附加信息（如情感分析结果、实体识别结果等）

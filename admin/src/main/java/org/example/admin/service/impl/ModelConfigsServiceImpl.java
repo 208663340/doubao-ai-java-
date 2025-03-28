@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 /**
 * @author 20866
 * @description 针对表【model_configs(存储AI模型的配置信息)】的数据库操作Service实现
-* @createDate 2025-03-28 11:07:48
+* @createdTimee 2025-03-28 11:07:48
 */
 @Service
 public class ModelConfigsServiceImpl extends ServiceImpl<ModelConfigsMapper, ModelConfigs>

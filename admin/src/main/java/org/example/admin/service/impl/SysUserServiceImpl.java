@@ -43,7 +43,7 @@ import static org.example.admin.comoon.enums.UserErrorCodeEnum.*;
 /**
 * @author 20866
 * @description 针对表【sys_user(用户信息表)】的数据库操作Service实现
-* @createDate 2025-03-27 13:40:30
+* @createdTimee 2025-03-27 13:40:30
 */
 @Slf4j
 @Service
@@ -111,8 +111,7 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, UserDO>
     public UserLoginRespDTO login(UserLoginReqDTO requestParam) {
         LambdaQueryWrapper<UserDO> queryWrapper = Wrappers.lambdaQuery(UserDO.class)
                 .eq(UserDO::getUsername, requestParam.getUsername())
-                .eq(UserDO::getPassword, requestParam.getPassword())
-                .eq(UserDO::getDelFlag, 0);
+                .eq(UserDO::getPassword, requestParam.getPassword());
         UserDO userDO = baseMapper.selectOne(queryWrapper);
         if (userDO == null) {
             throw new ClientException("用户不存在");

@@ -39,7 +39,7 @@ public class AiMessages implements Serializable {
     /**
      * 消息发送时间
      */
-    private Date createdAt;
+    private Date createdTime;
 
     /**
      * 附加信息（如模型使用的参数、推理时间等）

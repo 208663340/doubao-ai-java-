@@ -9,11 +9,11 @@
             <result property="sessionId" column="session_id" />
             <result property="userId" column="user_id" />
             <result property="messageText" column="message_text" />
-            <result property="createdAt" column="created_at" />
+            <result property="createdTime" column="created_time" />
             <result property="metadata" column="metadata" />
     </resultMap>
 
     <sql id="Base_Column_List">
-        user_message_id,session_id,user_id,message_text,created_at,metadata
+        user_message_id,session_id,user_id,message_text,created_time,metadata
     </sql>
 </mapper>

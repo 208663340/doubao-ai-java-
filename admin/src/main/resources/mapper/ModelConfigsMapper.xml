@@ -9,11 +9,11 @@
             <result property="modelName" column="model_name" />
             <result property="modelVersion" column="model_version" />
             <result property="parameters" column="parameters" />
-            <result property="createdAt" column="created_at" />
-            <result property="updatedAt" column="updated_at" />
+            <result property="createdTime" column="created_time" />
+            <result property="updatedTime" column="updated_time" />
     </resultMap>
 
     <sql id="Base_Column_List">
-        config_id,model_name,model_version,parameters,created_at,updated_at
+        config_id,model_name,model_version,parameters,created_time,updated_time
     </sql>
 </mapper>

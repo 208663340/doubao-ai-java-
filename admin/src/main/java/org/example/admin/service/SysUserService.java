@@ -12,7 +12,7 @@ import org.example.admin.dto.resp.user.UserRespDTO;
 /**
 * @author 20866
 * @description 针对表【sys_user(用户信息表)】的数据库操作Service
-* @createDate 2025-03-27 13:40:30
+* @createdTimee 2025-03-27 13:40:30
 */
 public interface SysUserService extends IService<UserDO> {
 

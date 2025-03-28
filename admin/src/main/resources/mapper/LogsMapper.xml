@@ -8,10 +8,10 @@
             <id property="logId" column="log_id" />
             <result property="level" column="level" />
             <result property="message" column="message" />
-            <result property="createdAt" column="created_at" />
+            <result property="createdTime" column="created_time" />
     </resultMap>
 
     <sql id="Base_Column_List">
-        log_id,level,message,created_at
+        log_id,level,message,created_time
     </sql>
 </mapper>

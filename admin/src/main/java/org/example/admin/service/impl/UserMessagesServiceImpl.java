@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 /**
 * @author 20866
 * @description 针对表【user_messages(存储用户发送的消息)】的数据库操作Service实现
-* @createDate 2025-03-28 11:07:52
+* @createdTimee 2025-03-28 11:07:52
 */
 @Service
 public class UserMessagesServiceImpl extends ServiceImpl<UserMessagesMapper, UserMessages>

@@ -7,7 +7,7 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import java.io.Serializable;
 import java.util.Date;
 import lombok.Data;
-import org.example.admin.comoon.database.BaseDO;
+
 
 /**
  * 用户信息表
@@ -16,7 +16,7 @@ import org.example.admin.comoon.database.BaseDO;
 
 @Data
 @TableName(value ="sys_user")
-public class UserDO extends BaseDO {
+public class UserDO implements Serializable {
     /**
      * 用户ID
      */

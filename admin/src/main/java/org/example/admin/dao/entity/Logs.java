@@ -34,7 +34,7 @@ public class Logs implements Serializable {
     /**
      * 创建时间
      */
-    private Date createdAt;
+    private Date createdTime;
 
     @TableField(exist = false)
     private static final long serialVersionUID = 1L;
