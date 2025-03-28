@@ -10,10 +10,10 @@ import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.example.admin.comoon.biz.user.UserContext;
-import org.example.admin.comoon.convention.exception.ClientException;
-import org.example.admin.comoon.convention.exception.ServiceException;
-import org.example.admin.comoon.enums.UserErrorCodeEnum;
+import org.example.admin.comon.biz.user.UserContext;
+import org.example.admin.comon.convention.exception.ClientException;
+import org.example.admin.comon.convention.exception.ServiceException;
+import org.example.admin.comon.enums.UserErrorCodeEnum;
 
 import org.example.admin.dao.entity.UserDO;
 import org.example.admin.dto.req.user.UserLoginReqDTO;
@@ -36,9 +36,9 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 
-import static org.example.admin.comoon.constant.RedisCacheConstant.LOCK_USER_REGISTER_KEY;
-import static org.example.admin.comoon.constant.RedisCacheConstant.USER_LOGIN_KEY;
-import static org.example.admin.comoon.enums.UserErrorCodeEnum.*;
+import static org.example.admin.comon.constant.RedisCacheConstant.LOCK_USER_REGISTER_KEY;
+import static org.example.admin.comon.constant.RedisCacheConstant.USER_LOGIN_KEY;
+import static org.example.admin.comon.enums.UserErrorCodeEnum.*;
 
 /**
 * @author 20866

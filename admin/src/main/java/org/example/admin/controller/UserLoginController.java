@@ -2,8 +2,8 @@ package org.example.admin.controller;
 
 import cn.hutool.core.bean.BeanUtil;
 import lombok.AllArgsConstructor;
-import org.example.admin.comoon.convention.result.Result;
-import org.example.admin.comoon.convention.result.Results;
+import org.example.admin.comon.convention.result.Result;
+import org.example.admin.comon.convention.result.Results;
 import org.example.admin.dto.req.user.UserLoginReqDTO;
 import org.example.admin.dto.req.user.UserRegisterReqDTO;
 import org.example.admin.dto.req.user.UserUpdateReqDTO;
