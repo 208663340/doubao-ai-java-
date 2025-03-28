@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.example.admin.dao.mapper.LogsMapper">
+
+    <resultMap id="BaseResultMap" type="org.example.admin.dao.entity.Logs">
+            <id property="logId" column="log_id" />
+            <result property="level" column="level" />
+            <result property="message" column="message" />
+            <result property="createdAt" column="created_at" />
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        log_id,level,message,created_at
+    </sql>
+</mapper>

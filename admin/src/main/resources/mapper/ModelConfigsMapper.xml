@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.example.admin.dao.mapper.ModelConfigsMapper">
+
+    <resultMap id="BaseResultMap" type="org.example.admin.dao.entity.ModelConfigs">
+            <id property="configId" column="config_id" />
+            <result property="modelName" column="model_name" />
+            <result property="modelVersion" column="model_version" />
+            <result property="parameters" column="parameters" />
+            <result property="createdAt" column="created_at" />
+            <result property="updatedAt" column="updated_at" />
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        config_id,model_name,model_version,parameters,created_at,updated_at
+    </sql>
+</mapper>

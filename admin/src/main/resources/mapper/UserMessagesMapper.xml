@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.example.admin.dao.mapper.UserMessagesMapper">
+
+    <resultMap id="BaseResultMap" type="org.example.admin.dao.entity.UserMessages">
+            <id property="userMessageId" column="user_message_id" />
+            <result property="sessionId" column="session_id" />
+            <result property="userId" column="user_id" />
+            <result property="messageText" column="message_text" />
+            <result property="createdAt" column="created_at" />
+            <result property="metadata" column="metadata" />
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        user_message_id,session_id,user_id,message_text,created_at,metadata
+    </sql>
+</mapper>
