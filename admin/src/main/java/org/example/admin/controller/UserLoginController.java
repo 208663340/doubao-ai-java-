@@ -1,16 +1,15 @@
 package org.example.admin.controller;
 
 import cn.hutool.core.bean.BeanUtil;
-import jakarta.annotation.Resource;
 import lombok.AllArgsConstructor;
 import org.example.admin.comoon.convention.result.Result;
 import org.example.admin.comoon.convention.result.Results;
-import org.example.admin.dto.req.UserLoginReqDTO;
-import org.example.admin.dto.req.UserRegisterReqDTO;
-import org.example.admin.dto.req.UserUpdateReqDTO;
-import org.example.admin.dto.resp.UserActualRespDTO;
-import org.example.admin.dto.resp.UserLoginRespDTO;
-import org.example.admin.dto.resp.UserRespDTO;
+import org.example.admin.dto.req.user.UserLoginReqDTO;
+import org.example.admin.dto.req.user.UserRegisterReqDTO;
+import org.example.admin.dto.req.user.UserUpdateReqDTO;
+import org.example.admin.dto.resp.user.UserActualRespDTO;
+import org.example.admin.dto.resp.user.UserLoginRespDTO;
+import org.example.admin.dto.resp.user.UserRespDTO;
 import org.example.admin.service.SysUserService;
 import org.springframework.web.bind.annotation.*;
 

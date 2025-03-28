@@ -3,11 +3,11 @@ package org.example.admin.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import org.example.admin.dao.entity.UserDO;
-import org.example.admin.dto.req.UserLoginReqDTO;
-import org.example.admin.dto.req.UserRegisterReqDTO;
-import org.example.admin.dto.req.UserUpdateReqDTO;
-import org.example.admin.dto.resp.UserLoginRespDTO;
-import org.example.admin.dto.resp.UserRespDTO;
+import org.example.admin.dto.req.user.UserLoginReqDTO;
+import org.example.admin.dto.req.user.UserRegisterReqDTO;
+import org.example.admin.dto.req.user.UserUpdateReqDTO;
+import org.example.admin.dto.resp.user.UserLoginRespDTO;
+import org.example.admin.dto.resp.user.UserRespDTO;
 
 /**
 * @author 20866
