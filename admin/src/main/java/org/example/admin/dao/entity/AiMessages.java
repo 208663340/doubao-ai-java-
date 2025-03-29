@@ -19,12 +19,12 @@ public class AiMessages implements Serializable {
      * AI消息唯一标识
      */
     @TableId(type = IdType.AUTO)
-    private Integer aiMessageId;
+    private Long aiMessageId;
 
     /**
      * 关联的会话ID（手动维护关系）
      */
-    private Integer sessionId;
+    private String sessionId;
 
     /**
      * 使用的AI模型配置ID（手动维护关系）

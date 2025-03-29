@@ -24,17 +24,26 @@ package org.example.admin.comon.constant;
 public class RedisCacheConstant {
 
     /**
+     * 用户历史sessionId
+     */
+    public static final String USER_HISTORY_SESSION_ID = "crud:user:history:";
+
+    /**
+     * sessionId
+     */
+    public static final String CHAT_SESSION_ID = "crud:chat:session-id:";
+    /**
      * 用户注册分布式锁
      */
-    public static final String LOCK_USER_REGISTER_KEY = "crud:lock_user-register:";
+    public static final String LOCK_USER_REGISTER_KEY = "crud:user:register:";
 
     /**
      * 分组创建分布式锁
      */
-    public static final String LOCK_GROUP_CREATE_KEY = "crud:lock_group-create:%s";
+    public static final String ATOMIC_SESSION_ID_COUNTER = "crud:chat:session-id_counter:";
 
     /**
      * 用户登录缓存标识
      */
-    public static final String USER_LOGIN_KEY = "crud:login:";
+    public static final String USER_LOGIN_KEY = "crud:user:login:";
 }

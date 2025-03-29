@@ -109,8 +109,8 @@ CREATE TABLE `sys_product` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='商品信息表';
 
 CREATE TABLE user_messages (
-                               user_message_id INT AUTO_INCREMENT PRIMARY KEY COMMENT '用户消息唯一标识', -- 用户消息唯一标识
-                               session_id INT NOT NULL COMMENT '关联的会话ID（手动维护关系）',            -- 关联的会话ID
+                               user_message_id BIGINT AUTO_INCREMENT PRIMARY KEY COMMENT '用户消息唯一标识', -- 用户消息唯一标识
+                               session_id CHAR(36) NOT NULL COMMENT '关联的会话ID（手动维护关系）',            -- 关联的会话ID
                                user_id INT NOT NULL COMMENT '发送消息的用户ID（手动维护关系）',           -- 发送消息的用户ID
                                message_text TEXT NOT NULL COMMENT '消息内容',                             -- 消息内容
                                created_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP COMMENT '消息发送时间',     -- 消息发送时间
@@ -118,8 +118,8 @@ CREATE TABLE user_messages (
                                INDEX idx_session_id (session_id)                                          -- 为 session_id 添加索引
 ) COMMENT='存储用户发送的消息';
 CREATE TABLE ai_messages (
-                             ai_message_id INT AUTO_INCREMENT PRIMARY KEY COMMENT 'AI消息唯一标识', -- AI消息唯一标识
-                             session_id INT NOT NULL COMMENT '关联的会话ID（手动维护关系）',        -- 关联的会话ID
+                             ai_message_id BIGINT AUTO_INCREMENT PRIMARY KEY COMMENT 'AI消息唯一标识', -- AI消息唯一标识
+                             session_id CHAR(36) NOT NULL COMMENT '关联的会话ID（手动维护关系）',        -- 关联的会话ID
                              model_config_id INT DEFAULT NULL COMMENT '使用的AI模型配置ID（手动维护关系）', -- 使用的AI模型配置ID
                              message_text TEXT NOT NULL COMMENT '消息内容',                         -- 消息内容
                              created_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP COMMENT '消息发送时间', -- 消息发送时间
@@ -138,7 +138,7 @@ CREATE TABLE model_configs (
 ) COMMENT='存储AI模型的配置信息';
 
 CREATE TABLE logs (
-                      log_id INT AUTO_INCREMENT PRIMARY KEY COMMENT '日志唯一标识', -- 日志唯一标识
+                      log_id BIGINT AUTO_INCREMENT PRIMARY KEY COMMENT '日志唯一标识', -- 日志唯一标识
                       level ENUM('info', 'warning', 'error') NOT NULL COMMENT '日志级别', -- 日志级别
                       message TEXT NOT NULL COMMENT '日志消息',                     -- 日志消息
                       created_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间', -- 创建时间
