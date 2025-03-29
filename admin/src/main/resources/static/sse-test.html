@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SSE测试页面</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .chat-container {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .message-container {
+            height: 400px;
+            overflow-y: auto;
+            border: 1px solid #eee;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+        .message {
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .user-message {
+            background-color: #e3f2fd;
+            margin-left: 20px;
+        }
+        .ai-message {
+            background-color: #f5f5f5;
+            margin-right: 20px;
+        }
+        .input-container {
+            display: flex;
+            gap: 10px;
+        }
+        input {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #1976d2;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:disabled {
+            background-color: #ccc;
+        }
+        .status {
+            color: #666;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="chat-container">
+        <h2>SSE测试页面</h2>
+        <div class="status" id="connectionStatus">未连接</div>
+        <div class="message-container" id="messageContainer"></div>
+        <div class="input-container">
+            <input type="text" id="messageInput" placeholder="输入消息..." />
+            <button id="sendButton" onclick="sendMessage()">发送</button>
+        </div>
+    </div>
+
+    <script>
+        let eventSource = null;
+        const messageContainer = document.getElementById('messageContainer');
+        const messageInput = document.getElementById('messageInput');
+        const sendButton = document.getElementById('sendButton');
+        const connectionStatus = document.getElementById('connectionStatus');
+
+        function connectSSE() {
+            if (eventSource) {
+                eventSource.close();
+            }
+
+            eventSource = new EventSource('http://localhost:7001/api/v1/chat/stream', {
+                withCredentials: true
+            });
+            connectionStatus.textContent = '正在连接...';
+
+            eventSource.onopen = () => {
+                connectionStatus.textContent = '已连接';
+                connectionStatus.style.color = 'green';
+            };
+
+            eventSource.onmessage = (event) => {
+                const message = event.data;
+                if (message === '[DONE]') {
+                    enableInput();
+                    return;
+                }
+                appendMessage(message, 'ai');
+            };
+
+            eventSource.onerror = () => {
+                connectionStatus.textContent = '连接断开，正在重试...';
+                connectionStatus.style.color = 'red';
+                enableInput();
+            };
+        }
+
+        function appendMessage(content, type) {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${type}-message`;
+            messageDiv.textContent = content;
+            messageContainer.appendChild(messageDiv);
+            messageContainer.scrollTop = messageContainer.scrollHeight;
+        }
+
+        function disableInput() {
+            messageInput.disabled = true;
+            sendButton.disabled = true;
+        }
+
+        function enableInput() {
+            messageInput.disabled = false;
+            sendButton.disabled = false;
+        }
+
+        async function sendMessage() {
+            const message = messageInput.value.trim();
+            if (!message) return;
+
+            appendMessage(message, 'user');
+            messageInput.value = '';
+            disableInput();
+
+            try {
+                const response = await fetch('http://localhost:7001/api/v1/chat/stream', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ 
+                        message: message,
+                        sessionId: null, // 暂时不使用会话ID
+                        modelConfig: null // 暂时不使用模型配置
+                    }),
+                    credentials: 'include'
+                });
+
+                if (!response.ok) {
+                    throw new Error('发送消息失败');
+                }
+            } catch (error) {
+                appendMessage('发送消息失败: ' + error.message, 'system');
+                enableInput();
+            }
+        }
+
+        messageInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter' && !e.shiftKey) {
+                e.preventDefault();
+                sendMessage();
+            }
+        });
+
+        // 页面加载完成后自动连接SSE
+        connectSSE();
+    </script>
+</body>
+</html>

@@ -54,7 +54,7 @@ public class AiChatController {
         });
 
         // TODO: 实现实际的流式对话逻辑
-        // aiMessagesService.streamChat(req, emitter);
+         aiMessagesService.streamChat(req, emitter);
         
         return emitter;
     }

@@ -56,7 +56,7 @@ public class UserDO implements Serializable {
     /**
      * 创建人
      */
-    private String createBy;
+//    private String createBy;
 
     /**
      * 创建时间

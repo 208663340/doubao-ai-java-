@@ -18,3 +18,5 @@ spring:
     redis:
       database: 1
       host: localhost
+huoshan:
+  ark-api-key: "3ba5ea55-a2c1-4d52-85e1-4e2628a40139"

@@ -13,27 +13,25 @@
     <description>admin</description>
     <properties>
         <java.version>17</java.version>
+        <jackson.version>2.12.7.1</jackson.version>
+        <retrofit.version>2.9.0</retrofit.version>
+        <rxjava2.version>2.0.0</rxjava2.version>
+        <okhttp3-version>3.14.9</okhttp3-version>
     </properties>
     <dependencies>
-<!--        &lt;!&ndash; Sa-Token 权限认证，在线文档：https://sa-token.cc &ndash;&gt;-->
-<!--        <dependency>-->
-<!--            <groupId>cn.dev33</groupId>-->
-<!--            <artifactId>sa-token-spring-boot3-starter</artifactId>-->
-<!--            <version>1.40.0</version>-->
-<!--        </dependency>-->
-
+<!--    阿里巴巴开源thread local-->
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>transmittable-thread-local</artifactId>
             <version>2.14.2</version>
         </dependency>
 
-<!--        &lt;!&ndash; Sa-Token 整合 Redis （使用 jackson 序列化方式） &ndash;&gt;-->
-<!--        <dependency>-->
-<!--            <groupId>cn.dev33</groupId>-->
-<!--            <artifactId>sa-token-redis-jackson</artifactId>-->
-<!--            <version>1.40.0</version>-->
-<!--        </dependency>-->
+        <dependency>
+            <groupId>com.volcengine</groupId>
+            <artifactId>volcengine-java-sdk-ark-runtime</artifactId>
+            <!-- 替换'LATEST' 为 SDK 最新版本号：https://central.sonatype.com/artifact/com.volcengine/volcengine-java-sdk-ark-runtime -->
+            <version>LATEST</version>
+        </dependency>
 
 
         <dependency>
@@ -81,30 +79,29 @@
             <groupId>com.alibaba.fastjson2</groupId>
             <artifactId>fastjson2</artifactId>
         </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.mockito</groupId>
+                    <artifactId>mockito-core</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-inline</artifactId>
+            <version>5.2.0</version>
+            <scope>test</scope>
+        </dependency>
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
-            <version>RELEASE</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-api</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.mockito</groupId>
-            <artifactId>mockito-core</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.mockito</groupId>
-            <artifactId>mockito-junit-jupiter</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-test</artifactId>
+            <version>7.11.0</version>
             <scope>test</scope>
         </dependency>
 
@@ -130,8 +127,8 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>
-                    <source>14</source>
-                    <target>14</target>
+                    <source>17</source>
+                    <target>17</target>
                 </configuration>
             </plugin>
         </plugins>
