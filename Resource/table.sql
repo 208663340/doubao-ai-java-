@@ -17,7 +17,7 @@ CREATE TABLE `sys_user` (
                             `mobile` VARCHAR(20) COMMENT '手机号码',
                             `gender` TINYINT NOT NULL DEFAULT 0 COMMENT '性别（0未知 1男 2女）',
                             `status` TINYINT NOT NULL DEFAULT 1 COMMENT '状态（1启用 0禁用）',
-                            `create_by` VARCHAR(64) NOT NULL COMMENT '创建人',
+#                             `create_by` VARCHAR(64) NOT NULL COMMENT '创建人',
                             `create_time` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
                             `update_by` VARCHAR(64) COMMENT '更新人',
                             `update_time` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
