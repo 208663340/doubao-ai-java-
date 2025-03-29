@@ -107,3 +107,40 @@ CREATE TABLE `sys_product` (
                                KEY `idx_product_name` (`product_name`),
                                KEY `idx_status` (`status`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='商品信息表';
+
+CREATE TABLE user_messages (
+                               user_message_id INT AUTO_INCREMENT PRIMARY KEY COMMENT '用户消息唯一标识', -- 用户消息唯一标识
+                               session_id INT NOT NULL COMMENT '关联的会话ID（手动维护关系）',            -- 关联的会话ID
+                               user_id INT NOT NULL COMMENT '发送消息的用户ID（手动维护关系）',           -- 发送消息的用户ID
+                               message_text TEXT NOT NULL COMMENT '消息内容',                             -- 消息内容
+                               created_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP COMMENT '消息发送时间',     -- 消息发送时间
+                               metadata JSON DEFAULT NULL COMMENT '附加信息（如情感分析结果、实体识别结果等）', -- 附加信息
+                               INDEX idx_session_id (session_id)                                          -- 为 session_id 添加索引
+) COMMENT='存储用户发送的消息';
+CREATE TABLE ai_messages (
+                             ai_message_id INT AUTO_INCREMENT PRIMARY KEY COMMENT 'AI消息唯一标识', -- AI消息唯一标识
+                             session_id INT NOT NULL COMMENT '关联的会话ID（手动维护关系）',        -- 关联的会话ID
+                             model_config_id INT DEFAULT NULL COMMENT '使用的AI模型配置ID（手动维护关系）', -- 使用的AI模型配置ID
+                             message_text TEXT NOT NULL COMMENT '消息内容',                         -- 消息内容
+                             created_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP COMMENT '消息发送时间', -- 消息发送时间
+                             metadata JSON DEFAULT NULL COMMENT '附加信息（如模型使用的参数、推理时间等）', -- 附加信息
+                             INDEX idx_session_id (session_id)                                      -- 为 session_id 添加索引
+) COMMENT='存储AI生成的回复消息';
+
+CREATE TABLE model_configs (
+                               config_id INT AUTO_INCREMENT PRIMARY KEY COMMENT '配置唯一标识', -- 配置唯一标识
+                               model_name VARCHAR(100) NOT NULL COMMENT '模型名称',           -- 模型名称
+                               model_version VARCHAR(50) COMMENT '模型版本',                  -- 模型版本
+                               parameters JSON DEFAULT NULL COMMENT '模型参数（JSON格式）',   -- 模型参数
+                               created_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间', -- 创建时间
+                               updated_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间', -- 更新时间
+                               INDEX idx_model_name (model_name)                              -- 为 model_name 添加索引
+) COMMENT='存储AI模型的配置信息';
+
+CREATE TABLE logs (
+                      log_id INT AUTO_INCREMENT PRIMARY KEY COMMENT '日志唯一标识', -- 日志唯一标识
+                      level ENUM('info', 'warning', 'error') NOT NULL COMMENT '日志级别', -- 日志级别
+                      message TEXT NOT NULL COMMENT '日志消息',                     -- 日志消息
+                      created_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间', -- 创建时间
+                      INDEX idx_level (level)                                       -- 为 level 添加索引
+) COMMENT='记录系统操作日志';

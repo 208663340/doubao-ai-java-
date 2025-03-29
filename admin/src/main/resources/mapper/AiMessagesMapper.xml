@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.example.admin.dao.mapper.AiMessagesMapper">
+
+    <resultMap id="BaseResultMap" type="org.example.admin.dao.entity.AiMessages">
+            <id property="aiMessageId" column="ai_message_id" />
+            <result property="sessionId" column="session_id" />
+            <result property="modelConfigId" column="model_config_id" />
+            <result property="messageText" column="message_text" />
+            <result property="createdTime" column="created_time" />
+            <result property="metadata" column="metadata" />
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        ai_message_id,session_id,model_config_id,message_text,created_time,metadata
+    </sql>
+</mapper>

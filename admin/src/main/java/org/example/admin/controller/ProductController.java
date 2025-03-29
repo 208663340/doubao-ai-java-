@@ -2,8 +2,8 @@ package org.example.admin.controller;
 
 import jakarta.annotation.Resource;
 import lombok.AllArgsConstructor;
-import org.example.admin.comoon.convention.result.Result;
-import org.example.admin.comoon.convention.result.Results;
+import org.example.admin.comon.convention.result.Result;
+import org.example.admin.comon.convention.result.Results;
 import org.example.admin.dao.entity.ProductDO;
 import org.example.admin.dto.req.product.ProductAddReqDTO;
 import org.example.admin.service.SysProductService;

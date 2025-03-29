@@ -10,10 +10,10 @@ import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.example.admin.comoon.biz.user.UserContext;
-import org.example.admin.comoon.convention.exception.ClientException;
-import org.example.admin.comoon.convention.exception.ServiceException;
-import org.example.admin.comoon.enums.UserErrorCodeEnum;
+import org.example.admin.comon.biz.user.UserContext;
+import org.example.admin.comon.convention.exception.ClientException;
+import org.example.admin.comon.convention.exception.ServiceException;
+import org.example.admin.comon.enums.UserErrorCodeEnum;
 
 import org.example.admin.dao.entity.UserDO;
 import org.example.admin.dto.req.user.UserLoginReqDTO;
@@ -36,14 +36,14 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 
-import static org.example.admin.comoon.constant.RedisCacheConstant.LOCK_USER_REGISTER_KEY;
-import static org.example.admin.comoon.constant.RedisCacheConstant.USER_LOGIN_KEY;
-import static org.example.admin.comoon.enums.UserErrorCodeEnum.*;
+import static org.example.admin.comon.constant.RedisCacheConstant.LOCK_USER_REGISTER_KEY;
+import static org.example.admin.comon.constant.RedisCacheConstant.USER_LOGIN_KEY;
+import static org.example.admin.comon.enums.UserErrorCodeEnum.*;
 
 /**
 * @author 20866
 * @description 针对表【sys_user(用户信息表)】的数据库操作Service实现
-* @createDate 2025-03-27 13:40:30
+* @createdTimee 2025-03-27 13:40:30
 */
 @Slf4j
 @Service
@@ -111,8 +111,7 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, UserDO>
     public UserLoginRespDTO login(UserLoginReqDTO requestParam) {
         LambdaQueryWrapper<UserDO> queryWrapper = Wrappers.lambdaQuery(UserDO.class)
                 .eq(UserDO::getUsername, requestParam.getUsername())
-                .eq(UserDO::getPassword, requestParam.getPassword())
-                .eq(UserDO::getDelFlag, 0);
+                .eq(UserDO::getPassword, requestParam.getPassword());
         UserDO userDO = baseMapper.selectOne(queryWrapper);
         if (userDO == null) {
             throw new ClientException("用户不存在");
