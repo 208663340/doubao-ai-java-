@@ -5,6 +5,7 @@ import org.example.admin.comon.convention.result.Result;
 import org.example.admin.dto.req.chat.*;
 import org.example.admin.dto.resp.chat.*;
 import org.example.admin.service.AiMessagesService;
+import org.example.admin.service.UserMessagesService;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
 
@@ -53,40 +54,24 @@ public class AiChatController {
             }
         });
 
-        // TODO: 实现实际的流式对话逻辑
          aiMessagesService.streamChat(req, emitter);
         
         return emitter;
     }
 
-    /**
-     * 创建新会话
-     */
-    @PostMapping("/sessions")
-    public Result<CreateSessionResp> createSession(@RequestBody CreateSessionReq req) {
-        return null; // TODO: 实现创建会话逻辑
-    }
 
     /**
      * 获取会话历史消息
      */
-    @GetMapping("/sessions/{sessionId}/messages")
+    @GetMapping("/chat/history/{sessionId}")
     public Result<GetSessionHistoryResp> getSessionHistory(
-            @PathVariable Integer sessionId,
+            @PathVariable String sessionId,
             @RequestParam(defaultValue = "10") Integer pageSize,
             @RequestParam(defaultValue = "1") Integer pageNum) {
         return null; // TODO: 实现获取历史消息逻辑
     }
 
-    /**
-     * 发送用户消息并获取AI回复
-     */
-    @PostMapping("/sessions/{sessionId}/messages")
-    public Result<SendMessageResp> sendMessage(
-            @PathVariable Integer sessionId,
-            @RequestBody SendMessageReq req) {
-        return null; // TODO: 实现发送消息逻辑
-    }
+
 
     /**
      * 获取可用的AI模型配置列表

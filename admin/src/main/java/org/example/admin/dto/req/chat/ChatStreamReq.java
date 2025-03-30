@@ -8,6 +8,10 @@ import lombok.Data;
 @Data
 public class ChatStreamReq {
     /**
+     * 用户ID
+     */
+    private Long userId;
+    /**
      * 用户输入的消息
      */
     private String message;
@@ -15,7 +19,7 @@ public class ChatStreamReq {
     /**
      * 会话ID
      */
-    private Integer sessionId;
+    private String sessionId;
 
     /**
      * 模型配置ID

@@ -21,4 +21,9 @@ public class ChatStreamResp {
      * 错误信息，如果有的话
      */
     private String error;
+
+    /**
+     * 会话ID
+     */
+    private String sessionId;
 }

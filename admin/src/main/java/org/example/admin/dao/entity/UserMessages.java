@@ -16,20 +16,22 @@ import lombok.Data;
 @Data
 public class UserMessages implements Serializable {
     /**
+     * 发送消息的用户ID（手动维护关系）
+     */
+
+    @TableId(type = IdType.AUTO)
+    private Long userId;
+    /**
      * 用户消息唯一标识
      */
-    @TableId(type = IdType.AUTO)
-    private Integer userMessageId;
+    private int userMessageId;
 
     /**
      * 关联的会话ID（手动维护关系）
      */
-    private Integer sessionId;
+    private String sessionId;
 
-    /**
-     * 发送消息的用户ID（手动维护关系）
-     */
-    private Integer userId;
+
 
     /**
      * 消息内容
